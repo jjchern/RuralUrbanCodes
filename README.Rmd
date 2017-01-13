@@ -22,3 +22,18 @@ knitr::opts_chunk$set(
 # install.package("devtools")
 devtools::install_github("jjchern/RuralUrbanCodes")
 ```
+
+## Data
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+RuralUrbanCodes::rucc2003
+
+# Rural-Urban Continuum Codes 2003
+RuralUrbanCodes::rucc2003 %>% 
+    group_by(rucc_2003_desc) %>% 
+    summarise(rucc_2003 = mean(rucc_2003)) %>% 
+    arrange(rucc_2003) %>% 
+    knitr::kable()
+```
+
